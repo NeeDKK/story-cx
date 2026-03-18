@@ -92,12 +92,13 @@ function ReaderPage({ config, novels }: { config: AppConfig; novels: Novel[] }) 
   }, [chapter, config.baseUrl, novel]);
 
   const html = useMemo(() => marked.parse(content), [content]);
-  const prevChapter = chapterIndex > 0 ? novel?.chapters[chapterIndex - 1] : undefined;
-  const nextChapter = chapterIndex >= 0 && chapterIndex < novel.chapters.length - 1 ? novel.chapters[chapterIndex + 1] : undefined;
 
   if (!novel || !chapter) {
     return <p>未找到章节，请返回清单页选择小说。</p>;
   }
+
+  const prevChapter = chapterIndex > 0 ? novel.chapters[chapterIndex - 1] : undefined;
+  const nextChapter = chapterIndex < novel.chapters.length - 1 ? novel.chapters[chapterIndex + 1] : undefined;
 
   return (
     <section className="reader">

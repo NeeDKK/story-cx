@@ -1,6 +1,6 @@
 {
-  "siteName": "我的小说阅读器",
-  "siteDescription": "基于 Cloudflare Pages 的 Markdown 小说站点",
+  "siteName": "故事小馆",
+  "siteDescription": "把故事慢慢翻开，像在夜里点一盏小灯",
   "baseUrl": "https://needkk-hk-1304874805.cos.ap-hongkong.myqcloud.com/story/",
   "novelIndexPath": "/novels.json"
 }

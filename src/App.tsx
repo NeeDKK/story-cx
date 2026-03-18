@@ -8,12 +8,12 @@ function AppShell({ config, children }: { config: AppConfig; children: React.Rea
   return (
     <div className="app-shell">
       <header className="topbar">
-        <div>
+        <div className="topbar-text">
           <h1>{config.siteName}</h1>
           <p>{config.siteDescription}</p>
         </div>
         <Link className="home-link" to="/">
-          首页
+          🏠 书架
         </Link>
       </header>
       <main className="main-content">{children}</main>
@@ -25,8 +25,8 @@ function NovelListPage({ config, novels }: { config: AppConfig; novels: Novel[] 
   if (!novels.length) {
     return (
       <section className="empty-state">
-        <h2>还没有小说清单</h2>
-        <p>请先配置 `public/novels.json`，把你的小说目录和章节路径写进去。</p>
+        <h2>书架还空着</h2>
+        <p>先在 `public/novels.json` 里放入你的第一本小说，之后这里就会慢慢热闹起来。</p>
       </section>
     );
   }
@@ -38,8 +38,8 @@ function NovelListPage({ config, novels }: { config: AppConfig; novels: Novel[] 
           {novel.cover ? <img alt={novel.title} src={resolveAssetUrl(config.baseUrl, novel.cover)} /> : null}
           <div className="novel-card-body">
             <h2>{novel.title}</h2>
-            <p className="meta">{novel.author ?? '未知作者'}</p>
-            <p>{novel.description ?? '暂无简介'}</p>
+            <p className="meta">✍️ {novel.author ?? '无名作者'}</p>
+            <p style={{ color: '#7a5540', fontSize: '0.9rem' }}>{novel.description ?? '还没有简介，像一页静静等待翻开的纸。'}</p>
             <div className="chapter-list">
               {novel.chapters.map((chapter) => (
                 <Link key={chapter.id} to={`/novel/${novel.id}/chapter/${chapter.id}`}>
@@ -105,27 +105,27 @@ function ReaderPage({ config, novels }: { config: AppConfig; novels: Novel[] }) 
       <div className="reader-header">
         <div>
           <p className="breadcrumb">
-            <Link to="/">首页</Link>
+            <Link to="/">返回书架</Link>
             <span>/</span>
             <span>{novel.title}</span>
           </p>
           <h2>{novel.title}</h2>
-          <p>{chapter.title}</p>
+          <p className="reader-subtitle">{chapter.title}</p>
         </div>
         <button type="button" onClick={() => navigate(-1)}>
-          返回
+          回到上一页
         </button>
       </div>
-      {loading ? <p>正在加载章节...</p> : null}
+      {loading ? <p style={{ color: '#b06040', padding: '20px 0' }}>📖 章节正在翻页过来...</p> : null}
       {error ? <p className="error">{error}</p> : null}
       {!loading && !error ? <article className="markdown" dangerouslySetInnerHTML={{ __html: html }} /> : null}
       <div className="chapter-nav">
         {prevChapter ? (
           <Link className="nav-button" to={`/novel/${novel.id}/chapter/${prevChapter.id}`}>
-            上一章
+            前一章
           </Link>
         ) : (
-          <span className="nav-button disabled">上一章</span>
+          <span className="nav-button disabled">前一章</span>
         )}
         {nextChapter ? (
           <Link className="nav-button" to={`/novel/${novel.id}/chapter/${nextChapter.id}`}>
@@ -163,7 +163,7 @@ export default function App() {
   }
 
   if (!config) {
-    return <div className="app-shell"><p>正在初始化站点...</p></div>;
+    return <div className="app-shell"><p style={{ color: '#b06040', padding: '40px 0' }}>🌸 书页正在展开...</p></div>;
   }
 
   return (

@@ -1,0 +1,183 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #e5e7eb;
+  background: #07111f;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 35%),
+    linear-gradient(180deg, #07111f 0%, #0f172a 55%, #111827 100%);
+}
+
+a { color: #93c5fd; text-decoration: none; }
+
+p { margin: 0; }
+
+h1, h2, h3 { margin: 0; }
+
+.app-shell {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 28px 0 56px;
+}
+
+.topbar, .reader-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.topbar {
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(15, 23, 42, 0.78);
+  border-radius: 20px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+}
+
+.home-link, button {
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.home-link:hover, button:hover, .nav-button:hover, .chapter-list a:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.1);
+}
+
+.main-content {
+  display: grid;
+  gap: 20px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+}
+
+.novel-card, .reader {
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(15, 23, 42, 0.82);
+  border-radius: 20px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+}
+
+.novel-card {
+  display: grid;
+  gap: 16px;
+}
+
+.novel-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.meta, .error {
+  color: #cbd5e1;
+}
+
+.chapter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chapter-list a {
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+}
+
+.empty-state {
+  padding: 28px;
+  border: 1px dashed rgba(255,255,255,0.16);
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.56);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.reader {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.markdown {
+  margin-top: 20px;
+  color: #e5e7eb;
+  font-size: 18px;
+  line-height: 1.85;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  line-height: 1.2;
+}
+
+.markdown pre {
+  overflow: auto;
+  padding: 16px;
+  background: rgba(0,0,0,0.28);
+  border-radius: 12px;
+}
+
+.markdown code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.nav-button {
+  flex: 1;
+  text-align: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.nav-button.disabled {
+  opacity: 0.45;
+}
+
+@media (max-width: 720px) {
+  .topbar, .reader-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chapter-nav {
+    flex-direction: column;
+  }
+}

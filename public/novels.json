@@ -1,0 +1,17 @@
+[
+  {
+    "id": "sample-novel",
+    "title": "示例小说",
+    "author": "匿名",
+    "description": "把你的 Markdown 小说条目放到这里，站点会自动生成清单页。",
+    "cover": "",
+    "tags": ["示例", "Markdown"],
+    "chapters": [
+      {
+        "id": "chapter-1",
+        "title": "第一章",
+        "path": "婚房算盘：我的反击从婚后第二天开始.md"
+      }
+    ]
+  }
+]

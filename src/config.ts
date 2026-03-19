@@ -26,7 +26,11 @@ export async function loadConfig(): Promise<AppConfig> {
 }
 
 export async function loadNovels(config: AppConfig): Promise<Novel[]> {
-  const indexUrl = new URL(config.novelIndexPath, window.location.origin);
+  // 如果 baseUrl 已配置，novels.json 从 OSS 读取；否则从站点本地读取
+  const indexUrl = config.baseUrl
+    ? resolveAssetUrl(config.baseUrl, config.novelIndexPath)
+    : new URL(config.novelIndexPath, window.location.origin).href;
+
   const response = await fetch(indexUrl, { cache: 'no-store' });
   if (!response.ok) {
     throw new Error(`无法加载小说清单：${response.status}`);
